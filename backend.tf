@@ -5,7 +5,7 @@ terraform {
     workspaces {
       project = "AWS Vault Lab"
       # Have to pick one for init/validate local
-      name = "vault-aws-admin-terraform-cluster-local-us-west-2"
+      name = "vault-aws-admin-terraform-us-west-2"
     }
   }
 }
