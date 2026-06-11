@@ -27,30 +27,6 @@ variable "vault_mysql_readwrite_role_name" {
   default     = "appdb-readwrite"
 }
 
-variable "vault_mysql_readonly_default_ttl" {
-  description = "Default TTL for read-only dynamic MySQL credentials."
-  type        = string
-  default     = "1h"
-}
-
-variable "vault_mysql_readonly_max_ttl" {
-  description = "Maximum TTL for read-only dynamic MySQL credentials."
-  type        = string
-  default     = "24h"
-}
-
-variable "vault_mysql_readwrite_default_ttl" {
-  description = "Default TTL for read-write dynamic MySQL credentials."
-  type        = string
-  default     = "1h"
-}
-
-variable "vault_mysql_readwrite_max_ttl" {
-  description = "Maximum TTL for read-write dynamic MySQL credentials."
-  type        = string
-  default     = "24h"
-}
-
 variable "mysql_host" {
   description = "MySQL hostname for the Vault database connection."
   type        = string

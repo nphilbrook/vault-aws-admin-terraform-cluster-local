@@ -52,8 +52,6 @@ resource "vault_database_secret_backend_role" "mysql_readonly" {
 	EOT
   ]
 
-  default_ttl = var.vault_mysql_readonly_default_ttl
-  max_ttl     = var.vault_mysql_readonly_max_ttl
 }
 
 resource "vault_database_secret_backend_role" "mysql_readwrite" {
@@ -86,6 +84,4 @@ resource "vault_database_secret_backend_role" "mysql_readwrite" {
 	EOT
   ]
 
-  default_ttl = var.vault_mysql_readwrite_default_ttl
-  max_ttl     = var.vault_mysql_readwrite_max_ttl
 }
