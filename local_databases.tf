@@ -1,5 +1,6 @@
 resource "vault_mount" "database" {
-  count = local.dynamic_database_configured ? 1 : 0
+  count     = local.dynamic_database_configured ? 1 : 0
+  namespace = "snow-onboarded"
 
   local       = true
   path        = var.vault_database_mount_path
@@ -8,7 +9,8 @@ resource "vault_mount" "database" {
 }
 
 resource "vault_database_secret_backend_connection" "mysql" {
-  count = local.dynamic_database_configured ? 1 : 0
+  count     = local.dynamic_database_configured ? 1 : 0
+  namespace = "snow-onboarded"
 
   backend       = vault_mount.database[0].path
   name          = var.vault_mysql_connection_name
@@ -23,7 +25,8 @@ resource "vault_database_secret_backend_connection" "mysql" {
 }
 
 resource "vault_database_secret_backend_role" "mysql_readonly" {
-  count = local.dynamic_database_configured ? 1 : 0
+  count     = local.dynamic_database_configured ? 1 : 0
+  namespace = "snow-onboarded"
 
   backend = vault_mount.database[0].path
   name    = var.vault_mysql_readonly_role_name
@@ -55,7 +58,8 @@ resource "vault_database_secret_backend_role" "mysql_readonly" {
 }
 
 resource "vault_database_secret_backend_role" "mysql_readwrite" {
-  count = local.dynamic_database_configured ? 1 : 0
+  count     = local.dynamic_database_configured ? 1 : 0
+  namespace = "snow-onboarded"
 
   backend = vault_mount.database[0].path
   name    = var.vault_mysql_readwrite_role_name
