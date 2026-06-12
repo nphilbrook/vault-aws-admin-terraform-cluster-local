@@ -20,10 +20,11 @@ The MySQL account configured in Vault for the database connection should have en
 Example (run once as a privileged DBA user):
 
 ```sql
+DROP USER IF EXISTS 'vault_admin'@'%';
 CREATE USER IF NOT EXISTS 'vault_admin'@'%' IDENTIFIED BY 'REPLACE_ME_STRONG_PASSWORD';
 
-GRANT CREATE USER, ALTER USER, DROP USER, PROCESS ON *.* TO 'vault_admin'@'%';
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON appdb.* TO 'vault_admin'@'%';
+GRANT CREATE USER, PROCESS ON *.* TO 'vault_admin'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON appdb.* TO 'vault_admin'@'%' WITH GRANT OPTION;
 
 FLUSH PRIVILEGES;
 ```
